@@ -21,6 +21,7 @@ public class EntityMedico {
     private Long id;
     private String nome;
     private String email;
+    private String telefone;
     private String rm;
 
     @Enumerated(EnumType.STRING)
@@ -31,6 +32,7 @@ public class EntityMedico {
     public EntityMedico(MedicosDTO medicosDTO){
         this.nome = medicosDTO.nome();
         this.email = medicosDTO.email();
+        this.telefone = medicosDTO.telefone();
         this.rm = medicosDTO.rm();
         this.enumEspecialidades = medicosDTO.enumEspecialidades();
         this.entityEndereco = new EntityEndereco(medicosDTO.endereco());

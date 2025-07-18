@@ -1,17 +1,13 @@
 package med.vall.api.entity;
 
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import med.vall.api.DTO.DadosEndereco;
 
 @Embeddable
-@NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Table(name = "medico")
 public class EntityEndereco {
 
     private String logradouro;
@@ -21,6 +17,11 @@ public class EntityEndereco {
     private  String uf;
     private String complemento;
     private String numero;
+
+
+    public EntityEndereco(){
+
+    }
 
     public EntityEndereco(DadosEndereco dadosEndereco){
         this.logradouro = dadosEndereco.logradouro();

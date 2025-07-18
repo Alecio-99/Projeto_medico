@@ -1,10 +1,7 @@
 package med.vall.api.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import med.vall.api.DTO.MedicosDTO;
 import med.vall.api.enuns.EnumEspecialidades;
 
@@ -25,6 +22,7 @@ public class EntityMedico {
     private String rm;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "especialidade")
     private EnumEspecialidades enumEspecialidades;
     @Embedded
     private EntityEndereco entityEndereco;

@@ -1,5 +1,6 @@
 package med.vall.api.controller;
 
+import jakarta.validation.Valid;
 import med.vall.api.DTO.MedicosDTO;
 import med.vall.api.entity.EntityMedico;
 import med.vall.api.repository.RepositoryMedico;
@@ -17,7 +18,7 @@ public class Controller {
     private RepositoryMedico repositoryMedico;
 
     @PostMapping
-    public void cadastrar(@RequestBody MedicosDTO medicosDTO){
+    public void cadastrar(@RequestBody @Valid MedicosDTO medicosDTO){
         repositoryMedico.save(new EntityMedico(medicosDTO));
     }
 

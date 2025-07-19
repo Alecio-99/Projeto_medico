@@ -1,6 +1,8 @@
 package med.vall.api.controller;
 
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import med.vall.api.DTO.AtualizarCadastroMedicoDTO;
 import med.vall.api.DTO.MedicosDTO;
 import med.vall.api.DTO.MedicosListaDTO;
 import med.vall.api.entity.EntityMedico;
@@ -28,5 +30,11 @@ public class Controller {
    // Serve para configurar a quantidades de paginas e ordem que executa o json @PageableDefault(size = 10, sort = {"nome"}
     public Page<MedicosListaDTO> medicosListaDTOS(@PageableDefault(size = 10, sort = {"nome"}) Pageable pageable){
         return  repositoryMedico.findAll(pageable).map(MedicosListaDTO::new);
+   }
+   @PutMapping
+   @Transactional
+    public void atualizarCadastro (@RequestBody @Valid AtualizarCadastroMedicoDTO atualizarCadastroMedico){
+      var medico = repositoryMedico.getReferenceById(atualizarCadastroMedico.id());
+      medico.atualizarDadosMedico(atualizarCadastroMedico);
    }
 }

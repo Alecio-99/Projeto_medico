@@ -32,4 +32,27 @@ public class EntityEndereco {
         this.complemento = dadosEndereco.complemento();
         this.numero = dadosEndereco.numero();
     }
+    public void atualizarEndereco(DadosEndereco endereco){
+        if(endereco.logradouro() != null){
+            this.logradouro = endereco.logradouro();
+        }
+        if(endereco.cep() != null){
+            this.cep = endereco.cep();
+        }
+        if(endereco.uf() != null){
+            this.uf = endereco.uf();
+        }
+        if(endereco.bairro() != null){
+            this.bairro = endereco.bairro();
+        }
+        if(endereco.cidade() != null){
+            this.cidade = endereco.cidade();
+        }
+        if(endereco.complemento() != null){
+            this.complemento = endereco.complemento();
+        }
+        if(endereco.numero() != null){
+            this.numero = endereco.numero();
+        }
+    }
 }

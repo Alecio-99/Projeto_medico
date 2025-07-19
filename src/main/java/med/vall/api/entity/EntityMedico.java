@@ -1,7 +1,9 @@
 package med.vall.api.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.*;
+import med.vall.api.DTO.AtualizarCadastroMedicoDTO;
 import med.vall.api.DTO.MedicosDTO;
 import med.vall.api.enuns.EnumEspecialidades;
 
@@ -34,5 +36,17 @@ public class EntityMedico {
         this.rm = medicosDTO.rm();
         this.enumEspecialidades = medicosDTO.enumEspecialidades();
         this.entityEndereco = new EntityEndereco(medicosDTO.endereco());
+    }
+
+    public void atualizarDadosMedico(@Valid AtualizarCadastroMedicoDTO atualizarCadastroMedico) {
+        if(atualizarCadastroMedico.nome() != null){
+            this.nome = atualizarCadastroMedico.nome();
+        }
+        if(atualizarCadastroMedico.telefone() != null){
+            this.telefone = atualizarCadastroMedico.telefone();
+        }
+        if (atualizarCadastroMedico.dadosEndereco() != null){
+            this.entityEndereco.atualizarEndereco(atualizarCadastroMedico.dadosEndereco());
+        }
     }
 }

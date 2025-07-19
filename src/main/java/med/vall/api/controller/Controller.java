@@ -29,7 +29,7 @@ public class Controller {
    @GetMapping
    // Serve para configurar a quantidades de paginas e ordem que executa o json @PageableDefault(size = 10, sort = {"nome"}
     public Page<MedicosListaDTO> medicosListaDTOS(@PageableDefault(size = 10, sort = {"nome"}) Pageable pageable){
-        return  repositoryMedico.findAll(pageable).map(MedicosListaDTO::new);
+        return  repositoryMedico.findAllByAtivoTrue(pageable).map(MedicosListaDTO::new);
    }
    @PutMapping
    @Transactional
@@ -37,4 +37,11 @@ public class Controller {
       var medico = repositoryMedico.getReferenceById(atualizarCadastroMedico.id());
       medico.atualizarDadosMedico(atualizarCadastroMedico);
    }
+   @DeleteMapping("/{id}")
+   @Transactional
+    public void excluir(@PathVariable Long id){
+       var medico = repositoryMedico.getReferenceById(id);
+       medico.excluir();
+   }
+
 }

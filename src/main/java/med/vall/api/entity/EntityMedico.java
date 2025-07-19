@@ -29,7 +29,10 @@ public class EntityMedico {
     @Embedded
     private EntityEndereco entityEndereco;
 
+    private Boolean ativo;
+
     public EntityMedico(MedicosDTO medicosDTO){
+        this.ativo = true;
         this.nome = medicosDTO.nome();
         this.email = medicosDTO.email();
         this.telefone = medicosDTO.telefone();
@@ -48,5 +51,9 @@ public class EntityMedico {
         if (atualizarCadastroMedico.dadosEndereco() != null){
             this.entityEndereco.atualizarEndereco(atualizarCadastroMedico.dadosEndereco());
         }
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 }

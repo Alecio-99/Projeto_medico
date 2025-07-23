@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
@@ -25,8 +26,13 @@ public class Controller {
     private RepositoryMedico repositoryMedico;
 
     @PostMapping
-    public void cadastrar(@RequestBody @Valid MedicosDTO medicosDTO){
-        repositoryMedico.save(new EntityMedico(medicosDTO));
+    public ResponseEntity cadastrar(@RequestBody @Valid MedicosDTO medicosDTO, UriComponentsBuilder uriComponentsBuilder){
+        var medico = new EntityMedico(medicosDTO);
+        repositoryMedico.save(medico);
+        // Esse trecho de codigo serve para mostra qual o caminho esta sendo salvo o cadastro mostra também o id do cliente
+        var uri = uriComponentsBuilder.path("/medicos/{id}").buildAndExpand(medico.getId()).toUri();
+
+        return ResponseEntity.created(uri).body(new DadosDetalhamentosDTO(medico));
     }
    @GetMapping
    // Serve para configurar a quantidades de paginas e ordem que executa o json @PageableDefault(size = 10, sort = {"nome"}

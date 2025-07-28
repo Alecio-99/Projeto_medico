@@ -1,4 +1,4 @@
-package med.vall.api.infra;
+package med.vall.api.infra.exceptions;
 
 import jakarta.persistence.EntityNotFoundException;
 import med.vall.api.DTO.DadosErrosValidacao;

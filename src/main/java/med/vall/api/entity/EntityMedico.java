@@ -25,7 +25,7 @@ public class EntityMedico {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "especialidade")
-    private EnumEspecialidades enumEspecialidades;
+    private EnumEspecialidades especialidade;
     @Embedded
     private EntityEndereco entityEndereco;
 
@@ -37,7 +37,7 @@ public class EntityMedico {
         this.email = medicosDTO.email();
         this.telefone = medicosDTO.telefone();
         this.rm = medicosDTO.rm();
-        this.enumEspecialidades = medicosDTO.enumEspecialidades();
+        this.especialidade = medicosDTO.especialidade();
         this.entityEndereco = new EntityEndereco(medicosDTO.endereco());
     }
 

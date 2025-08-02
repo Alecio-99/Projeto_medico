@@ -11,6 +11,6 @@ public record MedicosListaDTO(
         EnumEspecialidades enumEspecialidades) {
 
     public MedicosListaDTO(EntityMedico entityMedico){
-        this(entityMedico.getId(), entityMedico.getNome(), entityMedico.getEmail(), entityMedico.getRm(), entityMedico.getEnumEspecialidades());
+        this(entityMedico.getId(), entityMedico.getNome(), entityMedico.getEmail(), entityMedico.getRm(), entityMedico.getEspecialidade());
     }
 }

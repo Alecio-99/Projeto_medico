@@ -1,6 +1,7 @@
 package med.vall.api.infra.exceptions;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.ValidationException;
 import med.vall.api.DTO.DadosErrosValidacao;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -20,5 +21,10 @@ public class TratamentoDeError {
         var errors = ex.getFieldErrors();
 
         return ResponseEntity.badRequest().body(errors.stream().map(DadosErrosValidacao::new).toList());
+    }
+    @ExceptionHandler(ValidationException.class)
+    public ResponseEntity tratarErrorRegraDeNegocio(ValidationException ex) {
+        return ResponseEntity.badRequest().body(ex.getMessage());
+
     }
 }

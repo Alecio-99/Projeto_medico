@@ -1,5 +1,6 @@
 package med.vall.api.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import med.vall.api.DTO.DadosAtualizacaoPaciente;
 import med.vall.api.DTO.DadosCadastroPaciente;
@@ -18,6 +19,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("pacientes")
+@SecurityRequirement(name = "bearer-key")
 public class ContrllerPaciente {
 
     @Autowired

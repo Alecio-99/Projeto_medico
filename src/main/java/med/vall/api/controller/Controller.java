@@ -1,5 +1,6 @@
 package med.vall.api.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import med.vall.api.DTO.AtualizarCadastroMedicoDTO;
@@ -20,6 +21,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("medicos")
+@SecurityRequirement(name = "bearer-key")
 public class Controller {
 
     @Autowired
